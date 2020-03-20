@@ -40,6 +40,31 @@ void SortZrost_bubble(int array[], int size,int spadZrost,int sposib) {
 			}
 		}
 }
+void SortZrost_select(int array[], int size, int spadZrost, int sposib) {
+	for (int i = 0; i < size; i++) {
+		int temp = array[0];
+		for (int j = i + 1; j < size; j++) {
+			if (array[i]>array[j]) {
+				temp = array[i];
+				array[i] = array[j];
+				array[j] = temp;
+			}
+		}
+	}
+}
+void SortZrost_insert(int array[], int size, int spadZrost, int sposib) {
+	int temp = 0;
+	int indexPr = 0;
+	for (int i = 1; i < size; i++) {
+		temp = array[i];
+		indexPr = i - 1;
+		while (indexPr >= 0 && array[indexPr]>temp) {
+			array[indexPr + 1] = array[indexPr];
+			array[indexPr] = temp;
+			indexPr--;
+		}
+	}
+}
 int main() {
 	const int size = 100;
 	int Masyv[size];
@@ -79,6 +104,12 @@ int main() {
 			cin >> sposib;
 			if (spadZrost==1&& sposib==1) {
 				SortZrost_bubble(Masyv, size, spadZrost, sposib);
+			}
+			else if (spadZrost == 1 && sposib == 2) {
+				SortZrost_select(Masyv, size, spadZrost,sposib);
+			}
+			else if (spadZrost == 1 && sposib == 3) {
+				SortZrost_insert(Masyv, size, spadZrost, sposib);
 			}
 		}break;
 		case 5: {
